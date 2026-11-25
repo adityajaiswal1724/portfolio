@@ -1,0 +1,143 @@
+.system-orbit {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 56 / 51;
+  isolation: isolate;
+  pointer-events: none;
+  user-select: none;
+  color: #c8ec8e;
+}
+
+.system-orbit__drawing {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.system-orbit__guides {
+  opacity: 0.14;
+}
+
+.system-orbit__far-orbit,
+.system-orbit__near-orbit,
+.system-orbit__sculpture,
+.system-orbit__core {
+  transform-box: view-box;
+  transform-origin: 280px 252px;
+}
+
+.system-orbit__far-orbit {
+  animation: system-orbit-revolve 100s linear infinite;
+}
+
+.system-orbit__near-orbit {
+  animation: system-orbit-revolve 78s linear infinite reverse;
+}
+
+.system-orbit__sculpture {
+  animation: system-orbit-suspend 9s ease-in-out infinite;
+}
+
+.system-orbit__core {
+  animation: system-orbit-pulse 5s ease-in-out infinite;
+}
+
+.system-orbit__chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  border: 1px solid rgb(199 225 151 / 17%);
+  border-radius: 6px;
+  background: rgb(17 20 16 / 92%);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 12%);
+  color: #cde6a8;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.system-orbit__chip--build {
+  top: 13%;
+  left: 8%;
+  transform: rotate(-5deg);
+}
+
+.system-orbit__chip--automate {
+  right: 4%;
+  bottom: 16%;
+  transform: rotate(4deg);
+}
+
+.system-orbit__caption {
+  position: absolute;
+  right: 0;
+  bottom: 1%;
+  left: 0;
+  color: #74796d;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.13em;
+  text-align: center;
+}
+
+[data-motion="paused"] .system-orbit *,
+.system-orbit[data-motion="paused"] * {
+  animation-play-state: paused !important;
+}
+
+@keyframes system-orbit-revolve {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes system-orbit-suspend {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1deg);
+  }
+}
+
+@keyframes system-orbit-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .system-orbit * {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .system-orbit__chip {
+    padding: 9px 11px;
+    gap: 7px;
+  }
+
+  .system-orbit__chip--build {
+    left: 4%;
+  }
+  .system-orbit__chip--automate {
+    right: 1%;
+  }
+  .system-orbit__caption {
+    letter-spacing: 0.08em;
+  }
+}
