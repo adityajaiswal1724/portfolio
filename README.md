@@ -68,16 +68,3 @@ Reviewed on 25 November 2026:
 
 The CV itself is preserved, including its older profile handles. No project links, roles, or achievements were fabricated. Update the PDF separately when those handles change.
 
-## Asset generation
-
-`src/app/opengraph-image.png` is the included social sharing card. If you change the design, regenerate with `node scripts/generate-social-image.mjs` (uses Sharp, included by Next.js), then rebuild. The favicon is `src/app/icon.svg`.
-
-## Verification completed
-
-- TypeScript validation and production static export passed.
-- Chrome checks at 320px, 390px, 768px, and 1440px widths: no horizontal overflow.
-- Verified project categories, details dialogs, Escape/focus restoration, command search, mobile menu, keyboard tabs, simulations, cancellation, motion pause, and reduced motion.
-- All five screenshot assets load; the CV returns a valid 161,356-byte PDF. Email copy works.
-- Five live demos and GitHub returned HTTP 200. LinkedIn blocks automated checks; the supplied profile URL is retained.
-- Production Chrome console: no warnings or errors.
-- Local Chrome lab traces: desktop LCP 593ms / CLS 0; mobile viewport with Fast 4G and 4× CPU slowdown LCP 812ms / CLS 0. These are local measurements, not a guarantee of deployed field performance.
